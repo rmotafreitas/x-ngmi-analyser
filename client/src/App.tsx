@@ -10,6 +10,7 @@ import { AnalyserPage, analyserLoader } from "./pages/Analyser";
 import { Suspense } from "react";
 function ErrorBoundary() {
   const error = useRouteError() as Error;
+  console.log(error);
   return (
     <div className="flex justify-center items-center h-screen">
       <div
