@@ -1,7 +1,7 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+  import.meta.env.VITE_API_BASE_URL || "https://x-ngmi-analyser.onrender.com";
 
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
