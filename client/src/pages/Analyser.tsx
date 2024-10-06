@@ -130,7 +130,7 @@ function AnalysisContent({ analysis }: { analysis: UserAnalysis }) {
   const handleShareOnX = async () => {
     await handleDownloadCanvas();
     const text = `Check out my X-NGMI analysis! I'm ${ngmiStatus} with a success percentage of ${analysis.success_percentage}%`;
-    const url = window.location.href;
+    const url = window.location.origin;
     const hashtags = "XNGMI,Analysis";
     const twitterIntentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
       text
