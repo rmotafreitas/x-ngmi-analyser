@@ -8,7 +8,7 @@ const host = "RENDER" in process.env ? `0.0.0.0` : `localhost`;
 const app = fastify();
 
 app.register(fastifyCors, {
-  origin: "*",
+  origin: "https://x-ngmi-analyser.vercel.app",
 });
 
 app.get("/ping", async (request, reply) => {
