@@ -69,7 +69,7 @@ export async function getUserPostsAndInfo(
     const bannerUrlMatch = bannerStyle?.match(/url\((.*?)\)/);
     userInfo.bannerPicture = bannerUrlMatch ? bannerUrlMatch[1] : "";
 
-    userInfo.posts = extractPosts(document, postLimit);
+    userInfo.posts = extractPosts(document, userInfo.username, postLimit);
     return userInfo;
   } catch (error) {
     console.error("Error fetching tweets and user info:", error);
@@ -77,7 +77,11 @@ export async function getUserPostsAndInfo(
   }
 }
 
-function extractPosts(document: Document, postLimit?: number): Post[] {
+function extractPosts(
+  document: Document,
+  username: string,
+  postLimit?: number
+): Post[] {
   const posts: Post[] = [];
   const postElements = document.querySelectorAll(".activity-posts");
 
@@ -91,6 +95,11 @@ function extractPosts(document: Document, postLimit?: number): Post[] {
       element.querySelector(".activity-descp p")?.textContent?.trim() || "";
 
     if (text && !posts.some((post) => post.text === text)) {
+      if (
+        element.querySelector(".user-text3 a h4 span")?.textContent?.trim() !==
+        username
+      )
+        continue;
       const post: Post = {
         text,
         timestamp:
