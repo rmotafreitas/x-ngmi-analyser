@@ -32,7 +32,7 @@ export const createCompletionRoute = async (app: FastifyInstance) => {
         });
       }
 
-      const postLimit = 7;
+      const postLimit = 14;
       const userInfo = await getUserPostsAndInfo(username, postLimit);
       console.log(userInfo);
       const analysis = await analyzeUser(userInfo, postLimit);
